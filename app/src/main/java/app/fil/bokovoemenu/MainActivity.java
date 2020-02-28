@@ -51,20 +51,19 @@ public class MainActivity extends AppCompatActivity   {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,  R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_gallery, R.id.nav_share, R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        MenuItem menuItem = (MenuItem)navigationView.getMenu().findItem(R.id.nav_gallery);
-        System.out.println(menuItem.toString()+" dsfghj");
+        MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_tools);
         menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                System.out.println("dsfghj "+menuItem.toString());
+                System.out.println("ItemClickListener "+menuItem.toString());
                 drawer.closeDrawer(GravityCompat.START);
-                return false;
+                return true;
             }
         });
     }
